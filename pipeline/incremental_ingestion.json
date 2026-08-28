@@ -68,10 +68,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "bronze",
-							"folder": {
-								"value": "@pipeline().parameters.table",
-								"type": "Expression"
-							},
+							"folder": "Users",
 							"file": {
 								"value": "@concat(pipeline().parameters.table,'_',variables('current'))",
 								"type": "Expression"
@@ -109,7 +106,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"container": "bronze",
-							"folder": "cdc",
+							"folder": "DimUser_cdc",
 							"file": "cdc.json"
 						}
 					},
@@ -136,14 +133,9 @@
 			{
 				"name": "IfIncrementalData",
 				"type": "IfCondition",
-				"dependsOn": [
-					{
-						"activity": "AzureSQLToLake",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
@@ -257,7 +249,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"container": "bronze",
-										"folder": "cdc",
+										"folder": "DimUser_cdc",
 										"file": "cdc.json"
 									}
 								}
