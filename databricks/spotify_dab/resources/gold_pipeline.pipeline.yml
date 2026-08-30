@@ -1,0 +1,10 @@
+resources:
+  pipelines:
+    gold_pipeline:
+      name: gold_pipeline
+      catalog: spotify_cata
+      schema: gold
+      serverless: true
+      libraries:
+        - glob:
+            include: ../source/gold/DT/transformations/**

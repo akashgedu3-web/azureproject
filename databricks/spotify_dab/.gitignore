@@ -1,0 +1,7 @@
+.bundle/
+.databricks/
+dist/
+__pycache__/
+*.pyc
+AGENTS.md
+CLAUDE.md
